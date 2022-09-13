@@ -1,10 +1,10 @@
 # Professor HeidelTime
 
-Creat a multilingual corpus weakly labeled by [HeidelTime](https://github.com/HeidelTime/heideltime).
+Create a multilingual corpus weakly labeled by [HeidelTime](https://github.com/HeidelTime/heideltime).
 
 ## Source Corpus
 
-We run the weak labeling for six languages. The details of the corpus for each language are described bellow.
+We run the weak labeling for six languages. The details of the corpus for each language are described below.
 
 | Dataset                 | Language | #Docs     | Date Span                 | #Tokens per doc | #Annotations | 
 |-------------------------|----------|-----------|---------------------------|-----------------|--------------|
@@ -34,12 +34,12 @@ pip install -r requirements.txt
 
 ### Install HeidelTime
 
-For this project we used the [py_heideltime](https://github.com/JMendes1995/py_heideltime) which requires some steps for
-the installation that are dependent on the OS. Please follow the
+For this project, we used the [py_heideltime](https://github.com/JMendes1995/py_heideltime) which requires some steps for
+the installation that is dependent on the OS. Please follow the
 [installation instructions](https://github.com/JMendes1995/py_heideltime#option-2-standalone-installation) on
 `py_heideltime` repo.
 
-For linux systems the installation is reduced to providing HeidelTime tree tagger to execution permission. This can be
+For Linux systems, the installation is reduced to providing HeidelTime tree tagger execution permission. This can be
 accomplished with the following script.
 
 ```shell
