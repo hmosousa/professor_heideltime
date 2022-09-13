@@ -40,9 +40,10 @@ def _read_folder_sequentially(folder_path: Path) -> Dict:
 
 
 class EnglishCorpus:
+    language = "english"
+
     def __init__(self, path: Path):
         self.path = path
-        self.language = "english"
 
     def files(self) -> File:
         rows = _read_csv_sequentially(self.path)
@@ -55,9 +56,10 @@ class EnglishCorpus:
 
 
 class FrenchCorpus:
+    language = "french"
+
     def __init__(self, path: Path):
         self.path = path
-        self.language = "french"
 
     def files(self) -> File:
         rows = _read_csv_sequentially(self.path)
@@ -70,9 +72,10 @@ class FrenchCorpus:
 
 
 class GermanCorpus:
+    language = "german"
+
     def __init__(self, path: Path):
         self.path = path
-        self.language = "german"
 
     def files(self) -> File:
 
@@ -101,9 +104,10 @@ class GermanCorpus:
 
 
 class ItalianCorpus:
+    language = "italian"
+
     def __init__(self, path: Path):
         self.path = path
-        self.language = "italian"
 
     def files(self) -> File:
         rows = _read_csv_sequentially(self.path)
@@ -116,9 +120,10 @@ class ItalianCorpus:
 
 
 class PortugueseCorpus:
+    language = "portuguese"
+
     def __init__(self, path: Path):
         self.path = path
-        self.language = "portuguese"
 
     def files(self) -> File:
         files = _read_folder_sequentially(self.path)
@@ -133,9 +138,10 @@ class PortugueseCorpus:
 
 
 class SpanishCorpus:
+    language = "spanish"
+
     def __init__(self, path: Path):
         self.path = path
-        self.language = "spanish"
 
     def files(self) -> File:
         rows = _read_csv_sequentially(self.path)
