@@ -28,14 +28,10 @@ rm french/FrenchNewsDayConcat.csv
 mv french/FrenchNews.csv french/data.csv
 
 echo "Downloading Portuguese corpus."
-wget -q --show-progress https://github.com/LIAAD/KeywordExtractor-Datasets/raw/master/datasets/110-PT-BN-KP.zip
-unzip -d portuguese 110-PT-BN-KP.zip
-rm 110-PT-BN-KP.zip
-mv portuguese/docsutf8 portuguese/data
-rm -r portuguese/keys
-rm portuguese/lan.txt
-rm portuguese/language.txt
-rm portuguese/README.txt
+wget -q --show-progress https://drive.inesctec.pt/s/N4ETjmF4k2MNkEs/download/publico_news.zip
+unzip -d portuguese publico_news.zip
+rm publico_news.zip
+mv portuguese/publico portuguese/data
 
 echo "Downloading Spanish corpus."
 wget -q --show-progress https://drive.inesctec.pt/s/CjBZsGRBn6qxGd2/download/elmundo_news.zip

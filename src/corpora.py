@@ -1,11 +1,15 @@
 import csv
+import json
 import logging
 from pathlib import Path
 import sys
 from typing import Dict
 
 from src.base import File
-from src.utils import timestamp_to_date, format_bad_date
+from src.utils import (
+    timestamp_to_date,
+    format_bad_date
+)
 
 csv.field_size_limit(sys.maxsize // 10)  # fix csv error
 
@@ -32,18 +36,30 @@ def _read_csv_sequentially(csv_path: Path) -> Dict:
             yield dict(zip(header, row))
 
 
-def _read_folder_sequentially(folder_path: Path) -> Dict:
-    filepaths = folder_path.glob("*.txt")
+def _read_folder_sequentially(folder_path: Path, extension: str = "") -> Dict:
+    filepaths = folder_path.glob(f"*{extension}")
     for filepath in filepaths:
         with open(filepath, encoding="utf-8") as fin:
             yield {"name": filepath.name, "content": fin.read()}
 
 
-class EnglishCorpus:
-    language = "english"
+class Corpus:
 
     def __init__(self, path: Path):
         self.path = path
+
+    def __len__(self):
+        count = 0
+        for _ in self.files():
+            count += 1
+        return count
+
+    def files(self):
+        yield None
+
+
+class EnglishCorpus(Corpus):
+    language = "english"
 
     def files(self) -> File:
         rows = _read_csv_sequentially(self.path)
@@ -55,11 +71,8 @@ class EnglishCorpus:
             )
 
 
-class FrenchCorpus:
+class FrenchCorpus(Corpus):
     language = "french"
-
-    def __init__(self, path: Path):
-        self.path = path
 
     def files(self) -> File:
         rows = _read_csv_sequentially(self.path)
@@ -71,11 +84,8 @@ class FrenchCorpus:
             )
 
 
-class GermanCorpus:
+class GermanCorpus(Corpus):
     language = "german"
-
-    def __init__(self, path: Path):
-        self.path = path
 
     def files(self) -> File:
 
@@ -103,11 +113,8 @@ class GermanCorpus:
             )
 
 
-class ItalianCorpus:
+class ItalianCorpus(Corpus):
     language = "italian"
-
-    def __init__(self, path: Path):
-        self.path = path
 
     def files(self) -> File:
         rows = _read_csv_sequentially(self.path)
@@ -119,29 +126,22 @@ class ItalianCorpus:
             )
 
 
-class PortugueseCorpus:
+class PortugueseCorpus(Corpus):
     language = "portuguese"
 
-    def __init__(self, path: Path):
-        self.path = path
-
     def files(self) -> File:
-        files = _read_folder_sequentially(self.path)
+        files = _read_folder_sequentially(self.path, ".json")
         for file in files:
-            year, month, day = file["name"][:10].split("_")
-            dct = f"{year}-{month}-{day}"
+            content = json.loads(file["content"])
             yield File(
-                dct=dct,
-                text=file["content"].strip(),
+                dct=content["data"],
+                text=content["texto"].strip(),
                 language=self.language
             )
 
 
-class SpanishCorpus:
+class SpanishCorpus(Corpus):
     language = "spanish"
-
-    def __init__(self, path: Path):
-        self.path = path
 
     def files(self) -> File:
         rows = _read_csv_sequentially(self.path)

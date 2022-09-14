@@ -9,8 +9,7 @@ from src.corpora import (
     SpanishCorpus
 )
 
-
-RAW_PATH = Path("data/raw")
+RAW_PATH = Path("../data/raw")
 
 
 def _test_corpus(corpus):
@@ -24,6 +23,7 @@ def test_process_english_corpus():
     corpus = EnglishCorpus(path)
     _test_corpus(corpus)
     assert corpus.language == "english"
+    assert len(corpus) == 2_688_878
 
 
 def test_process_french_corpus():
@@ -31,6 +31,7 @@ def test_process_french_corpus():
     corpus = FrenchCorpus(path)
     _test_corpus(corpus)
     assert corpus.language == "french"
+    assert len(corpus) == 41_543
 
 
 def test_process_german_corpus():
@@ -38,6 +39,7 @@ def test_process_german_corpus():
     corpus = GermanCorpus(path)
     _test_corpus(corpus)
     assert corpus.language == "german"
+    assert len(corpus) == 174_915
 
 
 def test_process_italian_corpus():
@@ -45,6 +47,7 @@ def test_process_italian_corpus():
     corpus = ItalianCorpus(path)
     _test_corpus(corpus)
     assert corpus.language == "italian"
+    assert len(corpus) == 10_395
 
 
 def test_process_portuguese_corpus():
@@ -52,6 +55,7 @@ def test_process_portuguese_corpus():
     corpus = PortugueseCorpus(path)
     _test_corpus(corpus)
     assert corpus.language == "portuguese"
+    assert len(corpus) == 38_729
 
 
 def test_process_spanish_corpus():
@@ -59,3 +63,4 @@ def test_process_spanish_corpus():
     corpus = SpanishCorpus(path)
     _test_corpus(corpus)
     assert corpus.language == "spanish"
+    assert len(corpus) == 2_639_152
