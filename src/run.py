@@ -52,7 +52,13 @@ def main() -> None:
             break
 
         logger.info(f"\tAnnotating file {file_idx}/{args.n_files_annotate}.")
-        annotation = annotate(file)
+
+        try:
+            annotation = annotate(file)
+        except IndexError:
+            logger.warning(f"There was a problem in the annotation of file with id {file_idx}.")
+            continue
+
         if not annotation:
             logger.info("\tDid not find any timexs for this file.")
             continue
