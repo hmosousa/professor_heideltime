@@ -21,31 +21,3 @@ def format_bad_date(date: str) -> str:
 def remove_directory(path: str) -> None:
     """Remove the path directory."""
     shutil.rmtree(path)
-
-
-def annotation_from_xml(xml: str):
-
-    annotation = []
-
-    try:
-        root = ET.fromstring(f"<data>{xml}</data>")
-    except ET.ParseError:
-        logger.warning(f"Was not able to parse file '{xml}'.")
-        return []
-
-    idx = 0
-    offsets = []
-    for element in root.itertext():
-        offsets += [(idx, idx + len(element), element)]
-        idx += len(element)
-    idx += 1  # to take into account the linebreak character
-
-    entities = root.findall("*")
-    for entity in entities:
-        while True:
-            begin, end, text = offsets.pop(0)
-            if entity.text == text:
-                annotation += [(text, (begin, end))]
-                break
-
-    return annotation

@@ -3,10 +3,15 @@ import logging.config
 from pathlib import Path
 
 from src.annotate import annotate
+from src.base import Corpus
 from src.cli import setup_parser
-from src.corpora import corpora, LANGUAGES
+from src.data import process
+from src.meta import LANGUAGES
 
-logging.config.fileConfig("logging.conf")
+ROOT_PATH = Path(__file__).parent.parent
+DATA_PATH = ROOT_PATH / "data"
+
+logging.config.fileConfig(ROOT_PATH / "logging.conf")
 logger = logging.getLogger(__name__)
 
 
@@ -20,38 +25,35 @@ def main() -> None:
         logger.error(msg)
         return
 
-    data_path = Path(args.data_path)
-    if not data_path.exists():
-        msg = f"Folder '{data_path}' does not exist. " \
-              f"Please follow the instruction in the README.md file."
+    raw_data_path = DATA_PATH / "raw" / args.language
+    if not raw_data_path.exists():
+        msg = f"Folder '{raw_data_path}' does not exist. " \
+              f"Please follow the instruction in the README.md file to download the raw data."
         logger.error(msg)
         return
 
+    processed_data_path = DATA_PATH / "processed" / args.language
+    if not processed_data_path.exists():
+        logger.info(f"Processing raw data.")
+        process(args.language)
+
     logger.info(f"Making annotations for language {args.language}.")
+    corpus = Corpus(processed_data_path)
 
-    [corpus] = [corpus(data_path) for corpus in corpora if corpus.language == args.language]
-
-    output_path = Path(args.output_path)
-    output_path.mkdir(exist_ok=True)
+    output_path = DATA_PATH / "annotated" / args.language
+    output_path.mkdir(exist_ok=True, parents=True)
 
     # check if the output dir has annotated files.
-    if list(output_path.glob("*.json")):
-        processed_file_idx = max(
-            int(file.name.strip(".json"))
-            for file in output_path.glob("*.json")
-        )
-    else:
-        processed_file_idx = 0
+    processed_file_idxs = [int(file.name.strip(".json")) for file in output_path.glob("*.json")]
+    processed_file_idxs += [0]  # guard in case no file has been processed
 
+    processed_file_idx = max(processed_file_idxs)
     for file_idx, file in enumerate(corpus.files()):
 
         if file_idx + 1 < processed_file_idx:  # file was already annotated.
             continue
 
-        if int(args.n_files_annotate) <= file_idx + 1:  # achieved the  annotation budget.
-            break
-
-        logger.info(f"\tAnnotating file {file_idx}/{args.n_files_annotate}.")
+        logger.info(f"\tAnnotating file {file_idx}/{len(corpus)}.")
 
         try:
             annotation = annotate(file)

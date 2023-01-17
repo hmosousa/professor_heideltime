@@ -32,25 +32,12 @@ We run the weak labeling for six languages. The details of the corpus for each l
 ### Setup development environment
 
 ```shell
-virtualenv venv --python=python3.8
+virtualenv venv --python=python3.10
 source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Install HeidelTime
-
-For this project, we used the [py_heideltime](https://github.com/JMendes1995/py_heideltime) which requires some steps
-for
-the installation that is dependent on the OS. Please follow the
-[installation instructions](https://github.com/JMendes1995/py_heideltime#option-2-standalone-installation) on
-`py_heideltime` repo.
-
-For Linux systems, the installation is reduced to providing HeidelTime tree tagger execution permission. This can be
-accomplished with the following script.
-
-```shell
-sudo chmod 111 venv/lib/python3.8/site-packages/py_heideltime/Heideltime/TreeTaggerLinux/bin/*
-```
+To assert that everything is working run pytest: `python -m pytest tests`
 
 ### Download data
 
@@ -61,5 +48,11 @@ sh data/download.sh
 ### Run the annotation
 
 ```shell
-python -m src.run --data_path "data/raw/english/data.csv" --language "english" --n_files_annotate 10000 --output_path "data/annotated/english"
+python -m src.run --language english
 ```
+
+## Meta
+
+[Hugo Sousa](https://hugosousa.net) - hugo.o.sousa@inesctec.pt
+
+This framework is part of the [Text2Story](https://text2story.inesctec.pt) project which is financed by the ERDF – European Regional Development Fund through the North Portugal Regional Operational Programme (NORTE 2020), under the PORTUGAL 2020 and by National Funds through the Portuguese funding agency, FCT - Fundação para a Ciência e a Tecnologia within project PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185)
