@@ -1,5 +1,7 @@
 # Professor HeidelTime
 
+[![License](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
+
 Create a multilingual corpus weakly labeled with [HeidelTime](https://github.com/HeidelTime/heideltime).
 
 ## Source Corpus
