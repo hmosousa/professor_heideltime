@@ -10,12 +10,18 @@ We run the weak labeling for six languages. The details of the corpus for each l
 
 | Dataset                 | Language | #Docs     | From       | To          | #Tokens per doc | #Annotations | 
 |-------------------------|----------|-----------|------------|-------------|-----------------|--------------|
-| [All the News 2.0]      | EN       | 2,688,878 | 2016-01-01 | 2020-04-02  |                 |              |
-| [Italian Crime News]    | IT       | 10,395    | 2011-01-01 | 2021-12-31  |                 |              |
-| [ElMundo News]          | ES       | 2,639,152 | 2003-01-01 | 2022-12-31  |                 |              |
-| [German News Dataset]   | DE       | 174,915   | 2005-12-02 | 2021-10-18  |                 |
-| [French Financial News] | FR       | 41,543    | 2017-10-19 | 2021-03-19  |                 |              |
-| [Público News]          | PT       | 38,729    | 2000-11-14 | 2002-03-20  |                 |              |
+| [All the News 2.0]      | EN       | 24,642    | 2016-01-01 | 2020-04-02  | 18,755,616      | 254,803      |
+| [Italian Crime News]    | IT       | 9,619     | 2011-01-01 | 2021-12-31  | 3,296,898       | 58,823       |
+| [ElMundo News]          | ES       | 33,266    | 2003-01-01 | 2022-12-31  | 21,617,888      | 348,011      |
+| [German News Dataset]   | DE       | 19,095    | 2005-12-02 | 2021-10-18  | 12,515,410      | 194,043      |
+| [French Financial News] | FR       | 27,154    | 2017-10-19 | 2021-03-19  | 1,673,053       | 83,431       |
+| [Público News]          | PT       | 24,293    | 2000-11-14 | 2002-03-20  | 5,929,377       | 111,810      |
+
+Dataset: ph_spanish
+Number of documents: 33266
+Number of tokens: 21617888
+Number of timexs: 348011
+---------------------------
 
 [All the News 2.0]: https://components.one/datasets/all-the-news-2-news-articles-dataset/
 
