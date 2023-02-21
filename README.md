@@ -17,12 +17,6 @@ We run the weak labeling for six languages. The details of the corpus for each l
 | [French Financial News] | FR       | 27,154 | 2017-10-19 | 2021-03-19  |  1,673,053 |  83,431  |
 | [Público News]          | PT       | 24,293 | 2000-11-14 | 2002-03-20  |  5,929,377 | 111,810  |
 
-Dataset: ph_spanish
-Number of documents: 33266
-Number of tokens: 21617888
-Number of timexs: 348011
----------------------------
-
 [All the News 2.0]: https://components.one/datasets/all-the-news-2-news-articles-dataset/
 
 [Italian Crime News]: https://github.com/federicarollo/Italian-Crime-News
