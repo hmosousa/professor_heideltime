@@ -1,6 +1,8 @@
 # Professor HeidelTime
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
+[![Download](https://img.shields.io/badge/-download-9cf)](https://drive.inesctec.pt/s/B4JojTJaMyR8wDN/download/professor_heideltime.zip)
+
 
 Professor HeidelTime is a project to create a multilingual corpus weakly labeled with [HeidelTime](https://github.com/HeidelTime/heideltime), a temporal tagger.
 
