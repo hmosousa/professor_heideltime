@@ -2,36 +2,36 @@
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
 
-Create a multilingual corpus weakly labeled with [HeidelTime](https://github.com/HeidelTime/heideltime).
+Professor HeidelTime is a project to create a multilingual corpus weakly labeled with [HeidelTime](https://github.com/HeidelTime/heideltime), a temporal tagger.
 
-## Source Corpus
+## Getting Started
 
-We run the weak labeling for six languages. The details of the corpus for each language are described below.
+### Download the Annotated Data
 
-| Dataset                 | Language | # Docs | From       | To          | # Tokens   | # Timexs | 
-|-------------------------|----------|--------|------------|-------------|------------|----------|
-| [All the News 2.0]      | EN       | 24,642 | 2016-01-01 | 2020-04-02  | 18,755,616 | 254,803  |
-| [Italian Crime News]    | IT       |  9,619 | 2011-01-01 | 2021-12-31  |  3,296,898 |  58,823  |
-| [ElMundo News]          | ES       | 33,266 | 2003-01-01 | 2022-12-31  | 21,617,888 | 348,011  |
-| [German News Dataset]   | DE       | 19,095 | 2005-12-02 | 2021-10-18  | 12,515,410 | 194,043  |
-| [French Financial News] | FR       | 27,154 | 2017-10-19 | 2021-03-19  |  1,673,053 |  83,431  |
-| [Público News]          | PT       | 24,293 | 2000-11-14 | 2002-03-20  |  5,929,377 | 111,810  |
+To download the Professor HeidelTime corpus, click on the following link: [Professor HeidelTime corpus](https://drive.inesctec.pt/s/B4JojTJaMyR8wDN/download/professor_heideltime.zip).
 
-[All the News 2.0]: https://components.one/datasets/all-the-news-2-news-articles-dataset/
+The downloaded archive contains six folders, each representing a different language. Inside each folder, there is one `.json` file for each annotated news article. The English, Italian, German, and French files contain `text`, `dct`, and `timexs` keys. However, due to licensing issues, the Portuguese and Spanish corpus files currently lack the `text` key. We are actively working with news sources to license these datasets for redistribution.
 
-[Italian Crime News]: https://github.com/federicarollo/Italian-Crime-News
+In the meantime, you can access the texts by running the following scrapping scripts: [Spanish](https://github.com/hmosousa/elmundo_scraper) and [Portuguese](https://github.com/hmosousa/publico_scraper).
 
-[ElMundo News]: https://github.com/hmosousa/elmundo_scraper
+### Corpus Details
 
-[German News Dataset]: https://www.kaggle.com/datasets/pqbsbk/german-news-dataset
+The weak labeling was performed in six languages. Here are the specifics of the corpus for each language:
 
-[French Financial News]: https://www.kaggle.com/datasets/arcticgiant/french-financial-news
+| Dataset                 | Language | Documents | From       | To         | Tokens     | Timexs    |
+| ----------------------- | -------- | --------- | ---------- | ---------- | ---------- | --------  |
+| [All the News 2.0]      | EN       | 24,642    | 2016-01-01 | 2020-04-02 | 18,755,616 | 254,803   |
+| [Italian Crime News]    | IT       | 9,619     | 2011-01-01 | 2021-12-31 | 3,296,898  | 58,823    |
+| [ElMundo News]          | ES       | 33,266    | 2003-01-01 | 2022-12-31 | 21,617,888 | 348,011   |
+| [German News Dataset]   | DE       | 19,095    | 2005-12-02 | 2021-10-18 | 12,515,410 | 194,043   |
+| [French Financial News] | FR       | 27,154    | 2017-10-19 | 2021-03-19 | 1,673,053  | 83,431    |
+| [Público News]          | PT       | 24,293    | 2000-11-14 | 2002-03-20 | 5,929,377  | 111,810   |
 
-[Público News]: https://drive.inesctec.pt/s/N4ETjmF4k2MNkEs/download/publico_news.zip
+## Running Annotations
 
-## Run Annotations
+### Set up Development Environment
 
-### Setup development environment
+To start with, set up a virtual environment and activate it. Then, install the necessary packages from the requirements file:
 
 ```shell
 virtualenv venv --python=python3.10
@@ -39,22 +39,30 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-To assert that everything is working run pytest: `python -m pytest tests`
+Run pytest to ensure that everything is working correctly: `python -m pytest tests`
 
-### Download data
+### Kaggle API Key
+
+To add the Kaggle API keys to your machine, follow the instructions provided on [kaggle-api](https://github.com/Kaggle/kaggle-api).
+
+### Download Raw Data
+
+You can download the raw data by executing the following command:
 
 ```shell
 sh data/download.sh
 ```
 
-### Run the annotation
+### Execute the Annotation
+
+To run the annotation, use the following command (replace 'english' with the language you want to annotate):
 
 ```shell
-python -m src.run --language english
+python src/run.py --language english
 ```
 
-## Meta
+## Contact
 
-[Hugo Sousa](https://hugosousa.net) - hugo.o.sousa@inesctec.pt
+For more information, reach out to [Hugo Sousa](https://hugosousa.net) at <hugo.o.sousa@inesctec.pt>.
 
-This framework is part of the [Text2Story](https://text2story.inesctec.pt) project which is financed by the ERDF – European Regional Development Fund through the North Portugal Regional Operational Programme (NORTE 2020), under the PORTUGAL 2020 and by National Funds through the Portuguese funding agency, FCT - Fundação para a Ciência e a Tecnologia within project PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185)
+This framework is a part of the [Text2Story](https://text2story.inesctec.pt) project. This project is financed by the ERDF – European Regional Development Fund through the North Portugal Regional Operational Programme (NORTE 2020), under the PORTUGAL 2020 and by National Funds through the Portuguese funding agency, FCT - Fundação para a Ciência e a Tecnologia within project PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185).
