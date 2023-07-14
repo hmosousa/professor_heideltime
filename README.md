@@ -1,5 +1,5 @@
 # Professor HeidelTime
-
+[![DOI](https://zenodo.org/badge/doi/10.57967/hf/0897.svg)](doi.org/10.57967/hf/0897)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
 [![Download](https://img.shields.io/badge/-download-9cf)](https://drive.inesctec.pt/s/B4JojTJaMyR8wDN/download/professor_heideltime.zip)
 
