@@ -1,4 +1,5 @@
 # Professor HeidelTime
+[![Paper](https://img.shields.io/badge/Paper-557C55)](https://dl.acm.org/doi/10.1145/3583780.3615130)
 [![DOI](https://zenodo.org/badge/doi/10.57967/hf/0897.svg)](doi.org/10.57967/hf/0897)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
 [![Download](https://img.shields.io/badge/-download-9cf)](https://drive.inesctec.pt/s/B4JojTJaMyR8wDN/download/professor_heideltime.zip)
@@ -68,3 +69,25 @@ python src/run.py --language english
 For more information, reach out to [Hugo Sousa](https://hugosousa.net) at <hugo.o.sousa@inesctec.pt>.
 
 This framework is a part of the [Text2Story](https://text2story.inesctec.pt) project. This project is financed by the ERDF – European Regional Development Fund through the North Portugal Regional Operational Programme (NORTE 2020), under the PORTUGAL 2020 and by National Funds through the Portuguese funding agency, FCT - Fundação para a Ciência e a Tecnologia within project PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185).
+
+## Cite
+
+If you use this work, please cite the following [paper](https://dl.acm.org/doi/10.1145/3583780.3615130):
+
+```bibtex
+@inproceedings{10.1145/3583780.3615130,
+    author = {Sousa, Hugo and Campos, Ricardo and Jorge, Al\'{\i}pio},
+    title = {TEI2GO: A Multilingual Approach for Fast Temporal Expression Identification},
+    year = {2023},
+    isbn = {9798400701245},
+    publisher = {Association for Computing Machinery},
+    url = {https://doi.org/10.1145/3583780.3615130},
+    doi = {10.1145/3583780.3615130},
+    booktitle = {Proceedings of the 32nd ACM International Conference on Information and Knowledge Management},
+    pages = {5401–5406},
+    numpages = {6},
+    keywords = {temporal expression identification, multilingual corpus, weak label},
+    location = {Birmingham, United Kingdom},
+    series = {CIKM '23}
+}
+```
