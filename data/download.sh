@@ -28,13 +28,13 @@ rm french/FrenchNewsDayConcat.csv
 mv french/FrenchNews.csv french/data.csv
 
 echo "Downloading Portuguese corpus."
-wget -q --show-progress https://drive.inesctec.pt/s/N4ETjmF4k2MNkEs/download/publico_news.zip
+wget -q --show-progress https://drive.inesctec.pt/s/2yjR5bjacBcknxB/download/publico_news.zip
 unzip -d portuguese publico_news.zip
 rm publico_news.zip
 mv portuguese/publico portuguese/data
 
 echo "Downloading Spanish corpus."
-wget -q --show-progress https://drive.inesctec.pt/s/CjBZsGRBn6qxGd2/download/elmundo_news.zip
+wget -q --show-progress https://drive.inesctec.pt/s/qEHLApE7nLrkz9W/download/elmundo_news.zip
 unzip -d spanish elmundo_news.zip
 rm elmundo_news.zip
 
